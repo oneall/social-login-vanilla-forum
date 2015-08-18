@@ -2,7 +2,7 @@
 
 $PluginInfo['OneallSocialLogin'] = array(
 		'Name' => 'OneAll Social Login',
-		'Description' => 'Social Login for Vanilla 2 allows your users to login and register with 25+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
+		'Description' => 'Social Login for Vanilla 2.1 allows your users to login and register with 25+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
 		'Version' => '1.0',
 		'RequiredApplications' => array('Vanilla' => '2.0.1'),
 		'RequiredTheme' => FALSE,
