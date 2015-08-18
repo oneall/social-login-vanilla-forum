@@ -28,8 +28,8 @@
 </div>
 <div class="Info">
 	<?php
-	echo Anchor(T('OA_SOCIAL_LOGIN_SETUP_FREE_ACCOUNT'), T('OA_SOCIAL_LOGIN_SETUP_FREE_ACCOUNT_HREF'), array('class' => 'SmallButton'));
-	echo Anchor(T('OA_SOCIAL_LOGIN_VIEW_CREDENTIALS'), T('OA_SOCIAL_LOGIN_VIEW_CREDENTIALS_HREF'), array('class' => 'SmallButton'));
+	echo Anchor(T('OA_SOCIAL_LOGIN_SETUP_FREE_ACCOUNT'), T('OA_SOCIAL_LOGIN_SETUP_FREE_ACCOUNT_HREF'), array('class' => 'external SmallButton'));
+	echo Anchor(T('OA_SOCIAL_LOGIN_VIEW_CREDENTIALS'), T('OA_SOCIAL_LOGIN_VIEW_CREDENTIALS_HREF'), array('class' => 'external SmallButton'));
 	?>
 </div>
 
@@ -77,9 +77,9 @@ echo $this->Form->Errors();
 						</td>
 						<td><?php
 						echo $this->Form->Radio('Plugin.OASocialLogin.Curl', T('OA_SOCIAL_LOGIN_CURL'), array('Value' => 1, 'class' => 'oa_social_login_api_curl'));
-						echo Wrap(T('OA_SOCIAL_LOGIN_CURL_DESC') . ' (' . Anchor(T('OA_SOCIAL_LOGIN_CURL_DOCS'), T('OA_SOCIAL_LOGIN_CURL_DOCS_HREF')) . ')');
+						echo Wrap(T('OA_SOCIAL_LOGIN_CURL_DESC') . ' (' . Anchor(T('OA_SOCIAL_LOGIN_CURL_DOCS'), T('OA_SOCIAL_LOGIN_CURL_DOCS_HREF'), array('class' => 'external')) . ')');
 						echo $this->Form->Radio('Plugin.OASocialLogin.Curl', T('OA_SOCIAL_LOGIN_FSOCKOPEN'), array('Value' => 0, 'class' => 'oa_social_login_api_fsockopen'));
-						echo Wrap(T('OA_SOCIAL_LOGIN_FSOCKOPEN_DESC') . ' (' . Anchor(T('OA_SOCIAL_LOGIN_FSOCKOPEN_DOCS'), T('OA_SOCIAL_LOGIN_FSOCKOPEN_DOCS_HREF')) . ')');
+						echo Wrap(T('OA_SOCIAL_LOGIN_FSOCKOPEN_DESC') . ' (' . Anchor(T('OA_SOCIAL_LOGIN_FSOCKOPEN_DOCS'), T('OA_SOCIAL_LOGIN_FSOCKOPEN_DOCS_HREF'), array('class' => 'external')) . ')');
 						?>
 						</td>
 					</tr>
