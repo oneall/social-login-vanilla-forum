@@ -68,6 +68,7 @@ class OneallSocialLogin extends Gdn_Plugin
 			return "'" . $p . "'";
 		}, C(self::CONFIG_PREFIX . 'Providers', array())));
 		$host = Gdn_Url::webRoot(TRUE);
+		$host .= substr ($host, -1, 1) === "/" ? "" : "/";
 		return "<h4 class='login-title'>${caption}</h4>
 				<div class='oneall_social_login_providers' id='${element}'></div>
 				<!-- OneAll Social Login : http://www.oneall.com //-->
