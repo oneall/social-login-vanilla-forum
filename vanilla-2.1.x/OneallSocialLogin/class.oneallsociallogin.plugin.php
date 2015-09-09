@@ -122,7 +122,7 @@ class OneallSocialLogin extends Gdn_Plugin
 		}
 		$caption = T(C(self::CONFIG_PREFIX . 'RegistrationPageCaption', ''));
 		$callback_uri = 'index.php?p=/plugin/oneallsociallogin/signin&Target=' . $Sender->RedirectTo();
-		echo '<li>'.$this->insert_oa_login ($caption, 'oneall_social_login_register', $callback_uri).'</li'>;
+		echo '<li>'.$this->insert_oa_login ($caption, 'oneall_social_login_register', $callback_uri).'</li>';
 	}
 
 	
