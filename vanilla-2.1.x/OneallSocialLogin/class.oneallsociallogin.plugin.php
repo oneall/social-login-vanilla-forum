@@ -3,7 +3,7 @@
 $PluginInfo['OneallSocialLogin'] = array(
 		'Name' => 'OneAll Social Login',
 		'Description' => 'Social Login for Vanilla allows your users to login and register with 25+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
-		'Version' => '1.0',
+		'Version' => '1.1',
 		'RequiredApplications' => array('Vanilla' => '2.0.1'),
 		'RequiredTheme' => FALSE,
 		'RequiredPlugins' => FALSE,
@@ -68,6 +68,7 @@ class OneallSocialLogin extends Gdn_Plugin
 			return "'" . $p . "'";
 		}, C(self::CONFIG_PREFIX . 'Providers', array())));
 		$host = Gdn_Url::webRoot(TRUE);
+		$host .= substr ($host, -1, 1) === "/" ? "" : "/";
 		return "<h4 class='login-title'>${caption}</h4>
 				<div class='oneall_social_login_providers' id='${element}'></div>
 				<!-- OneAll Social Login : http://www.oneall.com //-->
@@ -121,7 +122,7 @@ class OneallSocialLogin extends Gdn_Plugin
 		}
 		$caption = T(C(self::CONFIG_PREFIX . 'RegistrationPageCaption', ''));
 		$callback_uri = 'index.php?p=/plugin/oneallsociallogin/signin&Target=' . $Sender->RedirectTo();
-		echo '<li>'.$this->insert_oa_login ($caption, 'oneall_social_login_register', $callback_uri).'</li'>;
+		echo '<li>'.$this->insert_oa_login ($caption, 'oneall_social_login_register', $callback_uri).'</li>';
 	}
 
 	
