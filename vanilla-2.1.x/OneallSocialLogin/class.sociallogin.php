@@ -25,6 +25,7 @@
 
 class SocialLogin
 {
+	const USER_AGENT = 'SocialLogin/1.2 Vanilla/2.1.x (+http://www.oneall.com/)';
 
 	/*
 	* Helper function that returns a non-deleted Vanilla user
@@ -537,7 +538,7 @@ class SocialLogin
 		curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt ($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt ($curl, CURLOPT_SSL_VERIFYHOST, 0);
-		curl_setopt ($curl, CURLOPT_USERAGENT, 'SocialLogin Vanilla2 (+http://www.oneall.com/)');
+		curl_setopt ($curl, CURLOPT_USERAGENT, self::USER_AGENT);
 
 		// Does not work in PHP Safe Mode, we manually follow the locations if necessary.
 		curl_setopt ($curl, CURLOPT_FOLLOWLOCATION, 0);
@@ -662,7 +663,7 @@ class SocialLogin
 		// Create HTTP request
 		$defaults = array ();
 		$defaults ['Host'] = 'Host: ' . $host;
-		$defaults ['User-Agent'] = 'User-Agent: SocialLogin Vanilla2 (+http://www.oneall.com/)';
+		$defaults ['User-Agent'] = 'User-Agent: ' . self::USER_AGENT;
 
 		// BASIC AUTH?
 		if (isset ($options ['api_key']) && isset ($options ['api_secret']))
