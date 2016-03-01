@@ -869,7 +869,6 @@ class SocialLogin
 							$data ['user_login'] = $data ['user_full_name'];
 						}
 
-						// phpBB does not like spaces here
 						$data ['user_login'] = str_replace (' ', '', trim ($data ['user_login']));
 
 						// Website/Homepage.
