@@ -13,7 +13,8 @@ $PluginInfo['OneallSocialLogin'] = array(
 		'MobileFriendly' => TRUE,
 		'Author' => "OneAll",
 		'AuthorEmail' => 'support@oneall.com',
-		'AuthorUrl' => 'http://www.oneall.com/'
+		'AuthorUrl' => 'http://www.oneall.com/',
+		'License' => 'GNU GPL2'
 );
 
 class OneallSocialLogin extends Gdn_Plugin 
@@ -130,12 +131,9 @@ class OneallSocialLogin extends Gdn_Plugin
 	public function PluginController_OneallSocialLogin_Create ($Sender) 
 	{
 		$Sender->AddCssFile($this->GetResource('design/settings.css', FALSE, FALSE));
-		$Sender->AddJsFile($this->GetResource('js/settings.js', FALSE, FALSE));
-		
+		$Sender->AddJsFile($this->GetResource('js/settings.js', FALSE, FALSE));		
 		$Sender->Title(T('OA_SOCIAL_LOGIN_TITLE'));
-
 		$Sender->AddSideMenu('plugin/oneallsociallogin');
-
 		$Sender->Form = new Gdn_Form();
 
 		$this->Dispatch($Sender, $Sender->RequestArgs);
@@ -528,7 +526,7 @@ class OneallSocialLogin extends Gdn_Plugin
 		$Sender->Render ($this->GetView ('oa_social_login_validate.php'));		
 	}
 	
-	/**
+	/*
 	 * Plugin setup
 	 */
 	public function Setup() {
@@ -589,6 +587,4 @@ class OneallSocialLogin extends Gdn_Plugin
 	public function OnDisable() {
 		// Keep configuration values, and tables in case plugin is re-enabled later.
 	}
-
 }
-
