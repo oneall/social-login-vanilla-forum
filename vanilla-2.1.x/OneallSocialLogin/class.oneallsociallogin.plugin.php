@@ -3,13 +3,14 @@
 $PluginInfo['OneallSocialLogin'] = array(
 		'Name' => 'OneAll Social Login',
 		'Description' => 'Social Login for Vanilla allows your users to login and register with 25+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
-		'Version' => '1.2',
+		'Version' => '1.3',
 		'RequiredApplications' => array('Vanilla' => '2.0.1'),
 		'RequiredTheme' => FALSE,
 		'RequiredPlugins' => FALSE,
 		'HasLocale' => TRUE,
 		'SettingsUrl' => '/plugin/oneallsociallogin',
 		'SettingsPermission' => 'Garden.Settings.Manage',
+		'MobileFriendly' => TRUE,
 		'Author' => "OneAll",
 		'AuthorEmail' => 'support@oneall.com',
 		'AuthorUrl' => 'http://www.oneall.com/'
@@ -93,7 +94,7 @@ class OneallSocialLogin extends Gdn_Plugin
 			return;
 		}
 		$caption = T(C(self::CONFIG_PREFIX . 'IndexPageCaption', ''));
-		$callback_uri = 'index.php?p=/plugin/oneallsociallogin/signin&Target=' . Gdn::Request()->PathAndQuery();
+		$callback_uri = Url ('plugin/oneallsociallogin/signin&Target=' . Gdn::Request()->PathAndQuery());
 		echo $this->insert_oa_login ($caption, 'oneall_social_login_signin_index', $callback_uri);
 	}
 	
