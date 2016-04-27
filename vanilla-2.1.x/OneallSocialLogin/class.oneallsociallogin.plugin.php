@@ -143,7 +143,7 @@ class OneallSocialLogin extends Gdn_Plugin
 	public function Controller_Index ($Sender) 
 	{
 		// Prevent non-admins from accessing this page
-		$Sender->Permission('Vanilla.Settings.Manage');
+		$Sender->Permission('Garden.Settings.Manage');
 
 		$oa_settings = array(
 				self::CONFIG_PREFIX . 'Enable' => C(self::CONFIG_PREFIX . 'Enable', 1),
