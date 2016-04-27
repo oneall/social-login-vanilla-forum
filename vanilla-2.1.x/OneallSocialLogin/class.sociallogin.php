@@ -25,7 +25,7 @@
 
 class SocialLogin
 {
-	const USER_AGENT = 'SocialLogin/1.3 Vanilla/2.1.x (+http://www.oneall.com/)';
+	const USER_AGENT = 'SocialLogin/1.4 Vanilla/2.1.x (+http://www.oneall.com/)';
 
 	/*
 	* Helper function that returns a non-deleted Vanilla user
