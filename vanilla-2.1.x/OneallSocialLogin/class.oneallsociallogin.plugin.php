@@ -130,8 +130,8 @@ class OneallSocialLogin extends Gdn_Plugin
 	
 	public function PluginController_OneallSocialLogin_Create ($Sender) 
 	{
-		$Sender->AddCssFile($this->GetResource('design/settings.css', FALSE, FALSE));
-		$Sender->AddJsFile($this->GetResource('js/settings.js', FALSE, FALSE));		
+		$Sender->AddCssFile('settings.css', 'plugins/oneallsociallogin');
+		$Sender->AddJsFile('settings.js', 'plugins/oneallsociallogin');
 		$Sender->Title(T('OA_SOCIAL_LOGIN_TITLE'));
 		$Sender->AddSideMenu('plugin/oneallsociallogin');
 		$Sender->Form = new Gdn_Form();
