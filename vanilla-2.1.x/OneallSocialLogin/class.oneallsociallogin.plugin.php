@@ -33,6 +33,11 @@ class OneallSocialLogin extends Gdn_Plugin
 	 */
 	public function __construct() 
 	{
+            $Definition=&gdn::locale()->LocaleContainer->Data;
+            if(empty($Definition['OA_SOCIAL_LOGIN_SAVE']))
+            {
+                require_once __DIR__.'/locale/en-CA/definitions.php';
+            }
 	}
 
 	
