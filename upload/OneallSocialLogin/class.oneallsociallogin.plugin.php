@@ -3,7 +3,7 @@
 $PluginInfo['OneallSocialLogin'] = array(
     'Name' => 'OneAll Social Login',
     'Description' => 'Social Login for Vanilla allows your users to login and register with 25+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
-    'Version' => '1.4.0',
+    'Version' => '2.4.0',
     'RequiredApplications' => array('Vanilla' => '2.0.1'),
     'RequiredTheme' => false,
     'RequiredPlugins' => false,
@@ -32,6 +32,11 @@ class OneallSocialLogin extends Gdn_Plugin
      */
     public function __construct()
     {
+        $Definition = &gdn::locale()->LocaleContainer->Data;
+        if (empty($Definition['OA_SOCIAL_LOGIN_SAVE']))
+        {
+            require_once __DIR__ . '/locale/en-CA/definitions.php';
+        }
     }
 
     /*
@@ -128,8 +133,8 @@ class OneallSocialLogin extends Gdn_Plugin
 
     public function PluginController_OneallSocialLogin_Create($Sender)
     {
-        $Sender->AddCssFile($this->GetResource('design/settings.css', false, false));
-        $Sender->AddJsFile($this->GetResource('js/settings.js', false, false));
+        $Sender->AddCssFile('settings.css', 'plugins/oneallsociallogin');
+        $Sender->AddJsFile('settings.js', 'plugins/oneallsociallogin');
         $Sender->Title(T('OA_SOCIAL_LOGIN_TITLE'));
         $Sender->AddSideMenu('plugin/oneallsociallogin');
         $Sender->Form = new Gdn_Form();
