@@ -1,4 +1,4 @@
-# Social Login 1.4.0 for Vanilla 2.1+
+# Social Login 1.5.0 for Vanilla 2.1+
 
 Social Login allows your users to connect with one click to your Vanilla forum by using their social network accounts. 
 Gather rich demographic information (age, gender, phone numbers ...) about your users without requiring them to fill out any forms. 
@@ -13,29 +13,39 @@ Social Login seamlessly integrates into your Vanilla Forum so that you and your 
 * Amazon
 * Battle.net
 * Blogger
+* Discord
 * Disqus
 * Draugiem
+* Dribbble
 * Facebook
 * Foursquare
 * Github.com
 * Google
 * Instagram
+* Line
 * LinkedIn
 * LiveJournal
 * Mail.ru
+* Meetup
 * Odnoklassniki
 * OpenID
 * PayPal
+* Pinterest
+* PixelPin
 * Reddit
 * Skyrock.com
+* SoundCloud
 * StackExchange
 * Steam
+* Tumblr
 * Twitch.tv
 * Twitter
 * Vimeo
 * VKontakte
+* Weibo
 * Windows Live
 * WordPress.com
+* Xing
 * Yahoo
 * YouTube
 

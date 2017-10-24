@@ -25,7 +25,7 @@
 
 class SocialLogin
 {
-    const USER_AGENT = 'SocialLogin/1.4.0 Vanilla/2.1.x (+http://www.oneall.com/)';
+    const USER_AGENT = 'SocialLogin/1.5.0 Vanilla/2.1.x (+http://www.oneall.com/)';
 
     /*
      * Helper function that returns a non-deleted Vanilla user
@@ -404,29 +404,39 @@ class SocialLogin
             'amazon' => 'Amazon',
             'battlenet' => 'BattleNet',
             'blogger' => 'Blogger',
+            'discord' => 'Discord',
             'disqus' => 'Disqus',
             'draugiem' => 'Draugiem',
+            'dribbble' => 'Dribbble',
             'facebook' => 'Facebook',
             'foursquare' => 'Foursquare',
             'github' => 'Github.com',
             'google' => 'Google',
             'instagram' => 'Instagram',
+            'line' => 'Line',
             'linkedin' => 'LinkedIn',
             'livejournal' => 'LiveJournal',
             'mailru' => 'Mail.ru',
+            'meetup' => 'Meetup',
             'odnoklassniki' => 'Odnoklassniki',
             'openid' => 'OpenID',
             'paypal' => 'PayPal',
+            'pinterest' => 'Pinterest',
+            'pixelpin' => 'PixelPin',
             'reddit' => 'Reddit',
             'skyrock' => 'Skyrock.com',
+            'soundcloud' => 'SoundCloud',
             'stackexchange' => 'StackExchange',
             'steam' => 'Steam',
+            'tumblr' => 'Tumblr',
             'twitch' => 'Twitch.tv',
             'twitter' => 'Twitter',
             'vimeo' => 'Vimeo',
             'vkontakte' => 'VKontakte',
+            'weibo' => 'Weibo',
             'windowslive' => 'Windows Live',
             'wordpress' => 'WordPress.com',
+            'xing' => 'Xing',
             'yahoo' => 'Yahoo',
             'youtube' => 'YouTube'
         );
