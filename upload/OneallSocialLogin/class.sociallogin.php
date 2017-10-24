@@ -402,6 +402,7 @@ class SocialLogin
     {
         return array(
             'amazon' => 'Amazon',
+            'battlenet' => 'BattleNet',
             'blogger' => 'Blogger',
             'disqus' => 'Disqus',
             'draugiem' => 'Draugiem',
@@ -427,8 +428,7 @@ class SocialLogin
             'windowslive' => 'Windows Live',
             'wordpress' => 'WordPress.com',
             'yahoo' => 'Yahoo',
-            'youtube' => 'YouTube',
-            'battlenet' => 'BattleNet'
+            'youtube' => 'YouTube'
         );
     }
 
