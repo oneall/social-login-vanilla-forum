@@ -1,3 +1,7 @@
+## Available Versions
+* [Social Login for Vanilla Forum 2.1+](https://github.com/oneall/social-login-vanilla-forum/tree/vanilla/2.1+)
+* **Social Login for Vanilla Forum 2.3+**
+
 # Social Login 2.5.0 for Vanilla 2.3+
 
 Social Login allows your users to connect with one click to your Vanilla forum by using their social network accounts. 
