@@ -3,7 +3,7 @@
 $PluginInfo['OneallSocialLogin'] = array(
     'Name' => 'OneAll Social Login',
     'Description' => 'Social Login for Vanilla allows your users to login and register with 35+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
-    'Version' => '1.5.0',
+    'Version' => '2.0.0',
     'RequiredApplications' => array('Vanilla' => '2.0.1'),
     'RequiredTheme' => false,
     'RequiredPlugins' => false,
@@ -32,6 +32,14 @@ class OneallSocialLogin extends Gdn_Plugin
      */
     public function __construct()
     {
+        if (APPLICATION_VERSION >= "2.3")
+        {
+            $Definition = &gdn::locale()->LocaleContainer->Data;
+            if (empty($Definition['OA_SOCIAL_LOGIN_SAVE']))
+            {
+                require_once __DIR__ . '/locale/en-CA/definitions.php';
+            }
+        }
     }
 
     /*
@@ -94,7 +102,9 @@ class OneallSocialLogin extends Gdn_Plugin
             return;
         }
         $caption = T(C(self::CONFIG_PREFIX . 'IndexPageCaption', ''));
-        $callback_uri = Url('plugin/oneallsociallogin/signin&Target=' . Gdn::Request()->PathAndQuery());
+
+        $redirect_uri = !empty(Gdn::Request()->PathAndQuery()) && Gdn::Request()->PathAndQuery() != "?" ? Gdn::Request()->PathAndQuery() : '';
+        $callback_uri = 'index.php?p=/plugin/oneallsociallogin/signin&Target=' . $redirect_uri;
         echo $this->insert_oa_login($caption, 'oneall_social_login_signin_index', $callback_uri);
     }
 
@@ -128,8 +138,17 @@ class OneallSocialLogin extends Gdn_Plugin
 
     public function PluginController_OneallSocialLogin_Create($Sender)
     {
-        $Sender->AddCssFile($this->GetResource('design/settings.css', false, false));
-        $Sender->AddJsFile($this->GetResource('js/settings.js', false, false));
+        if (APPLICATION_VERSION < "2.3")
+        {
+            $Sender->AddCssFile($this->GetResource('design/settings.css', false, false));
+            $Sender->AddJsFile($this->GetResource('js/settings.js', false, false));
+        }
+        else
+        {
+            $Sender->AddCssFile('settings.css', 'plugins/oneallsociallogin');
+            $Sender->AddJsFile('settings.js', 'plugins/oneallsociallogin');
+        }
+
         $Sender->Title(T('OA_SOCIAL_LOGIN_TITLE'));
         $Sender->AddSideMenu('plugin/oneallsociallogin');
         $Sender->Form = new Gdn_Form();
