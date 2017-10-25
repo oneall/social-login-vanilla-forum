@@ -99,7 +99,9 @@ class OneallSocialLogin extends Gdn_Plugin
             return;
         }
         $caption = T(C(self::CONFIG_PREFIX . 'IndexPageCaption', ''));
-        $callback_uri = Url('plugin/oneallsociallogin/signin&Target=' . Gdn::Request()->PathAndQuery());
+
+        $redirect_uri = !empty(Gdn::Request()->PathAndQuery()) && Gdn::Request()->PathAndQuery() != "?" ? Gdn::Request()->PathAndQuery() : '';
+        $callback_uri = 'index.php?p=/plugin/oneallsociallogin/signin&Target=' . $redirect_uri;
         echo $this->insert_oa_login($caption, 'oneall_social_login_signin_index', $callback_uri);
     }
 
