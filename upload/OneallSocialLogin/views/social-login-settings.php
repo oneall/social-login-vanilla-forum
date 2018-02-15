@@ -342,9 +342,9 @@ echo $this->Form->Errors();
 						<td><?php
 						foreach (SocialLogin::all_providers() as $id => $name) 
 						{
-							echo '<label for="' . $this->Form->EscapeID(OneallSocialLogin::PROVIDER_PREFIX . $id, FALSE) . '" class="CheckBoxLabel oa_social_login_provider" >';
+							echo '<label for="' . $this->Form->EscapeID(OneallSocialLoginPlugin::PROVIDER_PREFIX . $id, FALSE) . '" class="CheckBoxLabel oa_social_login_provider" >';
 							echo '<span class="oa_social_login_provider_' . $id . '" title="' . $name . '">' . $name . '</span>';
-							echo $this->Form->CheckBox (OneallSocialLogin::PROVIDER_PREFIX . $id);
+							echo $this->Form->CheckBox (OneallSocialLoginPlugin::PROVIDER_PREFIX . $id);
 							echo $name;
 							echo '</label>';
 						}
