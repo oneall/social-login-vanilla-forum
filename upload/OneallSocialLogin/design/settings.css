@@ -1,4 +1,32 @@
 
+.SmallButton,
+.Button {
+  margin: 0;
+  border-radius: .5ex;
+  background: #3fbcf3;
+  background: linear-gradient(top, #aee7fe, #3fbcf3);
+  border: 1px solid #0F7FE6;
+  color: #003673;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 6px 10px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #B7F5FD;
+  font-weight: normal;
+  display: inline-block;
+}
+table thead th
+{
+  background: #dbf3fc;
+  font-size: 13px;
+  color: #222;
+  text-shadow: 0 1px 0 #fff;
+  font-weight: bold;
+border-bottom: 1px solid #a5d0e7;
+    padding: 6px 6px 6px 20px;
+    vertical-align: top;
+}
+
 #oneall_sociallogin input.oa_social_login_api_key {
 	width: 400px;
 }
@@ -55,6 +83,7 @@
   border: 0 none;
   line-height: 35px;
   margin-top: 8px;
+  display:block;
 }
 
 #oneall_sociallogin label.oa_social_login_provider * {
@@ -64,6 +93,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display:inline-block;
+  margin-left:5px;
+margin-right:5px;
 }
 
 #oneall_sociallogin label.oa_social_login_provider > span {
