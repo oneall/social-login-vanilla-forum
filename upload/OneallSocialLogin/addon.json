@@ -1,0 +1,20 @@
+{
+	"name": "OneAll Social Login",
+	"type": "addon",
+	"key": "OneallSocialLogin",
+	"description": "Social Login for Vanilla allows your users to login and register with 35+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.",
+	"version": "2.1.0",
+	"requiredTheme": 0,
+	"requiredPlugins": 0,
+	"hasLocale": 1,
+	"settingsUrl": "/plugin/oneallsociallogin",
+	"settingsPermission": "Garden.Settings.Manage",
+	"mobileFriendly": 1,
+	"authors": [{
+
+		"name": "OneAll",
+		"email": "support@oneall.com",
+		"homepage": "http://www.oneall.com/"
+	}],
+	"license": "GNU GPL2"
+}
