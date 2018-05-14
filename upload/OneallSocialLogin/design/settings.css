@@ -1,3 +1,109 @@
+.SmallButton,
+.Button {
+  margin: 20px 10px 20px 0;
+  border-radius: .5ex;
+  background: #3fbcf3;
+  background: linear-gradient(top, #aee7fe, #3fbcf3);
+  border: 1px solid #0F7FE6;
+  color: #003673;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 6px 10px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #B7F5FD;
+  font-weight: normal;
+  display: inline-block;
+}
+
+
+.Aside {
+    border: 1px solid #cc8;
+    border-width: 1px 0 1px 1px;
+    background: #ffc;
+    z-index: 200;
+    position: relative;
+    margin: 15px 0;
+    font-size: 12px;
+    padding: 15px;
+}
+
+h2{
+  margin-top: 0;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 30px;
+}
+table thead th
+{
+  background: #dbf3fc;
+  font-size: 13px;
+  color: #222;
+  text-shadow: 0 1px 0 #fff;
+  font-weight: bold;
+border-bottom: 1px solid #a5d0e7;
+    padding: 6px 6px 6px 20px;
+    vertical-align: top;
+}
+
+table tbody td
+{
+  padding: 5px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+table tbody td:first-child{
+  padding-right: 30px;
+  width: 60%; 
+}
+table#apiConnection tbody td:first-child{
+  padding-right: 30px;
+  width: 40%; 
+}
+
+table tbody tr:last-child td
+{
+  border-bottom: 0px;
+}
+
+table td span
+{
+ display: block;
+}
+
+
+form .js-modal-footer.form-footer{
+  display: block;
+  text-align: center;
+}
+.btn{
+    margin-top: 15px;
+    border-radius: .5ex;
+    background: #3fbcf3;
+    background: linear-gradient(top, #aee7fe, #3fbcf3);
+    border: 1px solid #0F7FE6;
+    color: #003673;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 6px 10px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #B7F5FD;
+    font-weight: normal;
+    display: inline-block;
+}
+
+form .js-modal-footer.form-footer {
+  display: block;
+  text-align: center;
+}
+form .js-modal-footer.form-footer #Form_Save{
+    padding: 10px 50px;
+    font-size: 16px;
+}
+
+label[id^=iCheck]{
+  display: block;
+}
 
 #oneall_sociallogin input.oa_social_login_api_key {
 	width: 400px;
@@ -55,6 +161,7 @@
   border: 0 none;
   line-height: 35px;
   margin-top: 8px;
+  display:block;
 }
 
 #oneall_sociallogin label.oa_social_login_provider * {
@@ -63,7 +170,10 @@
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none;  
+   display:inline-block;
+  margin-left:5px;
+  margin-right:5px;
 }
 
 #oneall_sociallogin label.oa_social_login_provider > span {

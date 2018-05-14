@@ -3,8 +3,8 @@
 $PluginInfo['OneallSocialLogin'] = array(
     'Name' => 'OneAll Social Login',
     'Description' => 'Social Login for Vanilla allows your users to login and register with 35+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
-    'Version' => '2.5.0',
-    'RequiredApplications' => array('Vanilla' => '2.3.0'),
+    'Version' => '2.6.0',
+    'RequiredApplications' => array('Vanilla' => '2.5.1'),
     'RequiredTheme' => false,
     'RequiredPlugins' => false,
     'HasLocale' => true,
@@ -17,11 +17,13 @@ $PluginInfo['OneallSocialLogin'] = array(
     'License' => 'GNU GPL2'
 );
 
-class OneallSocialLogin extends Gdn_Plugin
+class OneallSocialLoginPlugin extends Gdn_Plugin
 {
     // Prefix for provider fields on settings form:
     const CONFIG_PREFIX = 'Plugin.OASocialLogin.';
     const PROVIDER_PREFIX = 'Plugin.OASocialLogin.OASocialLogin.Provider__';
+
+    private $useNewFunctions = false;
 
     /**
      * Plugin constructor
@@ -32,10 +34,17 @@ class OneallSocialLogin extends Gdn_Plugin
      */
     public function __construct()
     {
-        $Definition = &gdn::locale()->LocaleContainer->Data;
-        if (empty($Definition['OA_SOCIAL_LOGIN_SAVE']))
+        if (version_compare(APPLICATION_VERSION, '2.3', '>='))
         {
-            require_once __DIR__ . '/locale/en-CA/definitions.php';
+            $Definition = &gdn::locale()->LocaleContainer->Data;
+            if (empty($Definition['OA_SOCIAL_LOGIN_SAVE']))
+            {
+                require_once __DIR__ . '/locale/en-CA/definitions.php';
+            }
+            if (version_compare(APPLICATION_VERSION, '2.5', '>='))
+            {
+                $this->useNewFunctions = true;
+            }
         }
     }
 
@@ -50,17 +59,21 @@ class OneallSocialLogin extends Gdn_Plugin
         }
         $subdomain = C(self::CONFIG_PREFIX . 'ApiSubdomain', '');
         $protocol = C(self::CONFIG_PREFIX . 'SSL', 1) == '1' ? 'https://' : 'http://';
-        // Can't seem to pass parameters to AddJSFile(), so:
-        $Sender->Head->AddString("
-				<script type='text/javascript'>
-				(function() { /* OneAll */
-					var oa = document.createElement('script');
-					oa.type = 'text/javascript'; oa.async = true;
-					oa.src = '${protocol}${subdomain}.api.oneall.com/socialize/library.js';
-					var s = document.getElementsByTagName('script')[0];
-					s.parentNode.insertBefore(oa, s);
-				})();
-				</script>");
+
+        if (!empty($subdomain))
+        {
+            // Can't seem to pass parameters to AddJSFile(), so:
+            $Sender->Head->AddString("
+                    <script type='text/javascript'>
+                    (function() { /* OneAll */
+                        var oa = document.createElement('script');
+                        oa.type = 'text/javascript'; oa.async = true;
+                        oa.src = '${protocol}${subdomain}.api.oneall.com/socialize/library.js';
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(oa, s);
+                    })();
+                    </script>");
+        }
     }
 
     /*
@@ -135,10 +148,19 @@ class OneallSocialLogin extends Gdn_Plugin
 
     public function PluginController_OneallSocialLogin_Create($Sender)
     {
-        $Sender->AddCssFile('settings.css', 'plugins/oneallsociallogin');
-        $Sender->AddJsFile('settings.js', 'plugins/oneallsociallogin');
+        if (APPLICATION_VERSION < "2.3")
+        {
+            $Sender->AddCssFile($this->GetResource('design/settings.css', false, false));
+            $Sender->AddJsFile($this->GetResource('js/settings.js', false, false));
+        }
+        else
+        {
+            $Sender->AddCssFile('settings.css', 'plugins/OneallSocialLogin');
+            $Sender->AddJsFile('settings.js', 'plugins/OneallSocialLogin');
+        }
+
         $Sender->Title(T('OA_SOCIAL_LOGIN_TITLE'));
-        $Sender->AddSideMenu('plugin/oneallsociallogin');
+        $this->AddLinkToSideMenu($Sender, 'plugin/oneallsociallogin');
         $Sender->Form = new Gdn_Form();
 
         $this->Dispatch($Sender, $Sender->RequestArgs);
@@ -199,7 +221,7 @@ class OneallSocialLogin extends Gdn_Plugin
             SaveToConfig($oa_settings_to_save);
             $Sender->InformMessage(T('OA_SOCIAL_LOGIN_SETTINGS_UPDATED'));
         }
-        $Sender->Render($this->GetView('social-login-settings.php'));
+        $this->renderView($Sender, 'social-login-settings');
     }
 
     /*
@@ -236,19 +258,57 @@ class OneallSocialLogin extends Gdn_Plugin
 
         $providers = implode(',', array_map(function ($p)
         {
-            return "'" . $p . "'";}, C(self::CONFIG_PREFIX . 'Providers', array())));
+            return "'" . $p . "'";
+        }, C(self::CONFIG_PREFIX . 'Providers', array())));
 
         $oasl = new SocialLogin();
         $user_token = $oasl->get_user_token_for_user_id(Gdn::Session()->UserID);
-        $callback_uri = Url('plugin/oneallsociallogin/signin&Target=' . Gdn::Request()->PathAndQuery(), true);
+        $callback_uri = Url('index.php?p=/plugin/oneallsociallogin/signin&Target=' . Gdn::Request()->PathAndQuery(), true);
+
+        $error = Gdn::Request()->Get('error');
 
         $Sender->SetData(array(
             'providers' => $providers,
             'user_token' => $user_token,
-            'callback_uri' => $callback_uri
+            'callback_uri' => $callback_uri,
+            'error' => $error
         ));
 
-        $Sender->Render($this->GetView('social-login-linking.php'));
+        $this->renderView($Sender, 'social-login-linking');
+    }
+
+    public function ProfileController_Link_error_Create($Sender, $Args)
+    {
+        if (C(self::CONFIG_PREFIX . 'Enable', 1) != '1' || C(self::CONFIG_PREFIX . 'LinkingEnable', 1) != '1')
+        {
+            return;
+        }
+
+        $Sender->Title(T('OA_SOCIAL_LOGIN_LINK_SIDEMENU'));
+        $Sender->Permission('Garden.SignIn.Allow');
+        // this is required to correctly display the profile template:
+        $Sender->GetUserInfo();
+
+        $providers = implode(',', array_map(function ($p)
+        {
+            return "'" . $p . "'";
+        }, C(self::CONFIG_PREFIX . 'Providers', array())));
+
+        $oasl = new SocialLogin();
+        $user_token = $oasl->get_user_token_for_user_id(Gdn::Session()->UserID);
+
+        $callback_uri = Url('index.php?p=/plugin/oneallsociallogin/signin&Target=' . preg_replace('/\_error\?error_message\=[a-zA-Z\+]*/', '', Gdn::Request()->PathAndQuery()), true);
+
+        $error = Gdn::Request()->Get('error_message');
+
+        $Sender->SetData(array(
+            'providers' => $providers,
+            'user_token' => $user_token,
+            'callback_uri' => $callback_uri,
+            'error' => $error
+        ));
+
+        $this->renderView($Sender, 'social-login-linking');
     }
 
     /*
@@ -453,7 +513,7 @@ class OneallSocialLogin extends Gdn_Plugin
             $Sender->Form = new Gdn_Form(); // TODO maybe not needed.
             $to_validate['val_id'] = $oasl->set_validation_data($to_validate);
             $Sender = $this->set_validation_fields($Sender, $to_validate);
-            $Sender->Render($this->GetView('oa_social_login_validate.php'));
+            $this->renderView($Sender, 'oa_social_login_validate');
         }
     }
 
@@ -527,7 +587,7 @@ class OneallSocialLogin extends Gdn_Plugin
             }
         }
         $Sender = $this->set_validation_fields($Sender, $to_validate);
-        $Sender->Render($this->GetView('oa_social_login_validate.php'));
+        $this->renderView($Sender, 'oa_social_login_validate');
     }
 
     /*
@@ -590,5 +650,30 @@ class OneallSocialLogin extends Gdn_Plugin
     public function OnDisable()
     {
         // Keep configuration values, and tables in case plugin is re-enabled later.
+    }
+
+    public function renderView($Sender, $Viewname)
+    {
+        if ($this->useNewFunctions)
+        {
+            // New method (only in 2.5+)
+            $Sender->render($Viewname, '', 'plugins/OneallSocialLogin/'); //Note: Viewname specified without ".php"
+        }
+        else
+        {
+            $Sender->render($this->getView($Viewname . 'php')); //For 2.3 and below add the php extention
+        }
+    }
+
+    private function addLinkToSideMenu($Sender, $Path)
+    {
+        if ($this->useNewFunctions)
+        {
+            $Sender->setHighlightRoute($Path);
+        }
+        else
+        {
+            $Sender->addSideMenu($Path);
+        }
     }
 }

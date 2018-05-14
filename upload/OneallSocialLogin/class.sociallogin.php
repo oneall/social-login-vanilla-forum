@@ -25,7 +25,7 @@
 
 class SocialLogin
 {
-    const USER_AGENT = 'SocialLogin/2.5.0 Vanilla/2.1.x (+http://www.oneall.com/)';
+    const USER_AGENT = 'SocialLogin/2.6.0 Vanilla/2.5.x (+http://www.oneall.com/)';
 
     /*
      * Helper function that returns a non-deleted Vanilla user
@@ -1254,6 +1254,29 @@ class SocialLogin
                     $target = Gdn::Request()->Get('Target');
                     SafeRedirect(Url($target, true));
                 }
+            }
+        }
+        else
+        {
+            // Decode the social network profile Data.
+            $error_data = json_decode($result->http_data);
+
+            // Make sur that the data has beeen decoded properly
+            if (is_object($error_data))
+            {
+                $error_message = $error_data->response->result->status->info;
+            }
+
+            // This was set in the callback_uri (JS):
+            $target = Gdn::Request()->Get('Target');
+
+            if (Gdn::Request()->Get('Target') == 'profile/link')
+            {
+                SafeRedirect(Url('/profile/link_error', true) . '&error_message=' . urlencode($error_message));
+            }
+            else
+            {
+                SafeRedirect(Url($target, true));
             }
         }
     }
