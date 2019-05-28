@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased]
 
-## [2.6.0] - 2018-05-14
+## [3.7.0] - 2017-10-24
+### Added
+New providers added :
+- Mixer
+
+## [3.6.0] - 2018-05-14
 ### Fixed
 Compatibility with Vanilla 2.5.1
 
-## [2.5.0] - 2017-10-24
+## [3.5.0] - 2017-10-24
 ### Added
 New providers added :
 - Discord
