@@ -1,6 +1,8 @@
 ## Available Versions
-* **Social Login for Vanilla Forum 2.1+**
-* [Social Login for Vanilla Forum 2.3+](https://github.com/oneall/social-login-vanilla-forum/tree/vanilla/2.3+)
+* [Social Login for Vanilla Forum 2.0.x](https://github.com/oneall/social-login-vanilla-forum/tree/vanilla/2.0.x)
+* **Social Login for Vanilla Forum 2.1-2.2.x**
+* [Social Login for Vanilla Forum 2.3-2.9.x](https://github.com/oneall/social-login-vanilla-forum/tree/vanilla/2.3-2.9.x)
+* [Social Login for Vanilla Forum 2.5+](https://github.com/oneall/social-login-vanilla-forum/tree/vanilla/2.5+)
 
 
 # Social Login 1.5.0 for Vanilla 2.1+
