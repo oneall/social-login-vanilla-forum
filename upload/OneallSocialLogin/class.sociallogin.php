@@ -25,7 +25,7 @@
 
 class SocialLogin
 {
-    const USER_AGENT = 'SocialLogin/3.7.0 Vanilla/2.5+ (+http://www.oneall.com/)';
+    const USER_AGENT = 'SocialLogin/3.8.0 Vanilla/2.5+ (+http://www.oneall.com/)';
 
     /*
      * Helper function that returns a non-deleted Vanilla user
@@ -421,6 +421,7 @@ class SocialLogin
             'mixer' => 'Mixer',
             'odnoklassniki' => 'Odnoklassniki',
             'openid' => 'OpenID',
+            'patreon' => 'Patreon',
             'paypal' => 'PayPal',
             'pinterest' => 'Pinterest',
             'pixelpin' => 'PixelPin',

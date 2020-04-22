@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased]
 
+## [3.8.0] - 2020-04-22
+### Added
+New providers added :
+- Patreon
+
 ## [3.7.0] - 2017-10-24
 ### Added
 New providers added :
