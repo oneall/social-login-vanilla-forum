@@ -25,7 +25,7 @@
 
 class SocialLogin
 {
-    const USER_AGENT = 'SocialLogin/2.7.0 Vanilla/2.3.x (+http://www.oneall.com/)';
+    const USER_AGENT = 'SocialLogin/2.8.0 Vanilla/2.3.x (+http://www.oneall.com/)';
 
     /*
      * Helper function that returns a non-deleted Vanilla user
@@ -402,6 +402,7 @@ class SocialLogin
     {
         return array(
             'amazon' => 'Amazon',
+            'apple' => 'Apple',
             'battlenet' => 'BattleNet',
             'blogger' => 'Blogger',
             'discord' => 'Discord',
