@@ -4,7 +4,7 @@
 * [Social Login for Vanilla Forum 2.3-2.4.x](https://github.com/oneall/social-login-vanilla-forum/tree/vanilla/2.3-2.4.x)
 * **Social Login for Vanilla Forum 2.5+**
 
-# Social Login 3.8.0 for Vanilla 2.5+
+# Social Login 3.9.0 for Vanilla 2.5+
 
 Social Login allows your users to connect with one click to your Vanilla forum by using their social network accounts. 
 Gather rich demographic information (age, gender, phone numbers ...) about your users without requiring them to fill out any forms. 
@@ -16,6 +16,7 @@ Social Login seamlessly integrates into your Vanilla Forum so that you and your 
 
 
 ## Supported Social Networks
+* Apple
 * Amazon
 * Battle.net
 * Blogger
