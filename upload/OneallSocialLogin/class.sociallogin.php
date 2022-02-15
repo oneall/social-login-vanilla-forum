@@ -25,7 +25,7 @@
 
 class SocialLogin
 {
-    const USER_AGENT = 'SocialLogin/3.9.0 Vanilla/2.5+ (+http://www.oneall.com/)';
+    const USER_AGENT = 'SocialLogin/3.10.0 Vanilla/2.5+ (+http://www.oneall.com/)';
 
     /*
      * Helper function that returns a non-deleted Vanilla user
@@ -409,6 +409,7 @@ class SocialLogin
             'disqus' => 'Disqus',
             'draugiem' => 'Draugiem',
             'dribbble' => 'Dribbble',
+            'epicgames' => 'Epic Games',
             'facebook' => 'Facebook',
             'foursquare' => 'Foursquare',
             'github' => 'Github.com',
@@ -429,8 +430,10 @@ class SocialLogin
             'reddit' => 'Reddit',
             'skyrock' => 'Skyrock.com',
             'soundcloud' => 'SoundCloud',
+            'spotify' => 'Spotify',
             'stackexchange' => 'StackExchange',
             'steam' => 'Steam',
+            'strava' => 'Strava',
             'tumblr' => 'Tumblr',
             'twitch' => 'Twitch.tv',
             'twitter' => 'Twitter',
@@ -441,6 +444,7 @@ class SocialLogin
             'wordpress' => 'WordPress.com',
             'xing' => 'Xing',
             'yahoo' => 'Yahoo',
+            'yandex' => 'Yandex',
             'youtube' => 'YouTube'
         );
     }

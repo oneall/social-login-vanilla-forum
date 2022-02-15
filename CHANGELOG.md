@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased]
 
+## [3.10.0] - 2022-02-15
+### Added
+New providers added :
+- Epic Games
+- Spotify
+- Strava
+- Yandex
+
 ## [3.9.0] - 2020-12-02
 ### Added
 New providers added :

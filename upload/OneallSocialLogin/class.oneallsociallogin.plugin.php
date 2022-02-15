@@ -3,7 +3,7 @@
 $PluginInfo['OneallSocialLogin'] = array(
     'Name' => 'OneAll Social Login',
     'Description' => 'Social Login for Vanilla allows your users to login and register with 35+ Social Networks like for example Twitter, Facebook, LinkedIn and Google+.',
-    'Version' => '3.9.0',
+    'Version' => '3.10.0',
     'RequiredApplications' => array('Vanilla' => '2.5.1'),
     'RequiredTheme' => false,
     'RequiredPlugins' => false,
@@ -88,7 +88,7 @@ class OneallSocialLoginPlugin extends Gdn_Plugin
         $host = Gdn_Url::webRoot(true);
         $host .= substr($host, -1, 1) === "/" ? "" : "/";
 
-        return "<h4 class='login-title'>${caption}</h4>
+        return "<h4 class='login-title' style='margin-bottom:10px;'>${caption}</h4>
 				<div class='oneall_social_login_providers' id='${element}'></div>
 				<!-- OneAll Social Login : http://www.oneall.com //-->
 				<script type='text/javascript'>
@@ -96,7 +96,6 @@ class OneallSocialLoginPlugin extends Gdn_Plugin
 					var _oneall = _oneall || [];
 					_oneall.push(['social_login', 'set_providers', [${providers}]]);
 					_oneall.push(['social_login', 'set_callback_uri', '${host}${callback_uri}']);
-					_oneall.push(['social_login', 'set_custom_css_uri', (('https:' == document.location.protocol) ? 'https://secure' : 'http://public') + '.oneallcdn.com/css/api/socialize/themes/wordpress/default.css']);
 					_oneall.push(['social_login', 'do_render_ui', '${element}']);
 					// ]]>
 				</script>";
